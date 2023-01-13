@@ -14,12 +14,7 @@ jobs:
           cd eagler-actions
       - name: run the servers
         run: |
-          screen -dm bash -c "cd bungee_command; chmod +x run_unix.sh; ./run_unix.sh; exec sh"
-          tmux new -d -s bukkit
-          sleep 1
-          tmux send-keys -t bukkit "cd bukkit_command; chmod +x run_unix.sh; ./run_unix.sh" ENTER
-          sleep 1
-          tmux capture-pane -pt bukkit
+          screen -dm bash -c "java -jar sp-relay.jar; ls; exec sh"
       - name: tunnel to the world
         run: |
           npm install -g localtunnel > /dev/null 2>&1

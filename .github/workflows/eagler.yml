@@ -22,12 +22,10 @@ jobs:
           tmux capture-pane -pt bukkit
       - name: tunnel to the world
         run: |
-          npm install -g localtunnel > /dev/null 2>&1
-          tmux new -d -s localtunnel
-          sleep 1
-          tmux send-keys -t localtunnel "lt -p 25565" ENTER
-          sleep 1
-          tmux capture-pane -pt localtunnel -S 1 -E 1
+          wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+          unzip -qq ngrok-stable-linux-amd64.zip
+          ./ngrok authtoken 2KHPU9GoTMYKBAxrxATjKziMzjv_5iN4QNLEruRiPx9ZXHQrY
+          ./ngrok tcp 25565
       - name: sleep
         run: sleep 999999999
 # kudos to you, lax1dude.

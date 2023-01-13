@@ -22,6 +22,7 @@ jobs:
           tmux capture-pane -pt bukkit
       - uses: LuisBoto/ngrok-tunnel-action@v0.1.7.2
         with:
+         timeout: 6h
          port: 25565
          ngrok_authtoken: 2KHPU9GoTMYKBAxrxATjKziMzjv_5iN4QNLEruRiPx9ZXHQrY
          tunnel_type: http

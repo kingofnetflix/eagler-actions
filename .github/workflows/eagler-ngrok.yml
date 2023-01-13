@@ -1,0 +1,31 @@
+name: eagler-actions
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # reeeeeeeeeeeeeeeeeeeeeeeeee
+      - name: download the eagler server
+        run: |
+          git clone https://github.com/kingofnetflix/eagler-actions --recursive
+          cd eagler-actions
+      - name: run the servers
+        run: |
+          screen -dm bash -c "cd bungee_command; chmod +x run_unix.sh; ./run_unix.sh; exec sh"
+          tmux new -d -s bukkit
+          sleep 1
+          tmux send-keys -t bukkit "cd bukkit_command; chmod +x run_unix.sh; ./run_unix.sh" ENTER
+          sleep 1
+          tmux capture-pane -pt bukkit
+      - uses: LuisBoto/ngrok-tunnel-action@v0.1.7.2
+        with:
+         timeout: 6h
+         port: 25565
+         ngrok_authtoken: 2KHPU9GoTMYKBAxrxATjKziMzjv_5iN4QNLEruRiPx9ZXHQrY
+         tunnel_type: http
+      - name: sleep
+        run: sleep 999999999
+# kudos to you, lax1dude.

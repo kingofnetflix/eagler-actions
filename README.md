@@ -7,3 +7,4 @@ eagler-actions is a way to run eaglercraft servers with Github Actions. currentl
 just put your localtunnel address in the server address. the server wont work immediatly so wait maybe 2 or 3 minutes before connecting and as always, if there are any bugs, **please dm me my discord tag is KingOfNetflix#7044**
 
 ![working](https://github.com/kingofnetflix/eagler-actions/blob/main/images/working.png?raw=true)
+(the client i used was resent client)

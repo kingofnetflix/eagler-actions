@@ -1,4 +1,4 @@
-name: eagler-actions
+name: eagler-actions (lan relay with ngrok)
 on:
   workflow_dispatch:
 

@@ -12,7 +12,6 @@ jobs:
         run: |
           git clone https://github.com/kingofnetflix/eagler-actions --recursive
           cd eagler-actions
-          screen -dm npm start
       - name: run the servers
         run: |
           screen -dm bash -c "cd bungee_command; ./run_unix.sh; exec sh"
@@ -21,6 +20,14 @@ jobs:
           tmux send-keys -t bukkit "cd bukkit_command; ./run_unix.sh" ENTER
           sleep 1
           tmux capture-pane -pt bukkit -S 1 -E 1
+      - name: tunnel to the world
+        run: |
+          npm install -g localtunnel > /dev/null 2>&1
+          tmux new -d -s localtunnel
+          sleep 1
+          tmux send-keys -t localtunnel "lt -p 25565" ENTER
+          sleep 1
+          tmux capture-pane -pt uv -S 1 -E 1
       - name: sleep
         run: sleep 999999999
 # kudos to you, lax1dude.

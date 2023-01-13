@@ -20,7 +20,7 @@ jobs:
           tmux send-keys -t bukkit "cd bukkit_command; chmod +x run_unix.sh; ./run_unix.sh" ENTER
           sleep 1
           tmux capture-pane -pt bukkit
-      - uses: apogiatzis/ngrok-tunneling-action@<VERSION>
+      - uses: apogiatzis/ngrok-tunneling-action@v0.1.4
         with:
          timeout: 1h
          port: 4000

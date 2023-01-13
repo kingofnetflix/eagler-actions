@@ -27,7 +27,7 @@ jobs:
           sleep 1
           tmux send-keys -t localtunnel "lt -p 25565" ENTER
           sleep 1
-          tmux capture-pane -pt uv -S 1 -E 1
+          tmux capture-pane -pt localtunnel -S 1 -E 1
       - name: sleep
         run: sleep 999999999
 # kudos to you, lax1dude.

@@ -20,14 +20,11 @@ jobs:
           tmux send-keys -t bukkit "cd bukkit_command; chmod +x run_unix.sh; ./run_unix.sh" ENTER
           sleep 1
           tmux capture-pane -pt bukkit
-      - name: tunnel to the world
-        run: |
-          npm install -g localtunnel > /dev/null 2>&1
-          tmux new -d -s localtunnel
-          sleep 1
-          tmux send-keys -t localtunnel "lt -p 25565" ENTER
-          sleep 1
-          tmux capture-pane -pt localtunnel -S 1 -E 1
+      - uses: LuisBoto/ngrok-tunnel-action@v0.1.7.2
+        with:
+         timeout: 6h
+         port: 25565
+         ngrok_authtoken: 2KHPU9GoTMYKBAxrxATjKziMzjv_5iN4QNLEruRiPx9ZXHQrY
       - name: sleep
         run: sleep 999999999
 # kudos to you, lax1dude.

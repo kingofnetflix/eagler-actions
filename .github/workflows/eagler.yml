@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+      # reeeeeeeeeeeeeeeeeeeeeeeeee
       - name: download the eagler server
         run: |
           git clone https://github.com/kingofnetflix/eagler-actions --recursive
@@ -20,11 +20,14 @@ jobs:
           tmux send-keys -t bukkit "cd bukkit_command; chmod +x run_unix.sh; ./run_unix.sh" ENTER
           sleep 1
           tmux capture-pane -pt bukkit
-      - uses: apogiatzis/ngrok-tunneling-action@v0.1.4
-        with:
-         timeout: 1h
-         port: 4000
-         ngrok_authtoken: 2KHPU9GoTMYKBAxrxATjKziMzjv_5iN4QNLEruRiPx9ZXHQrY
+      - name: tunnel to the world
+        run: |
+          npm install -g localtunnel > /dev/null 2>&1
+          tmux new -d -s localtunnel
+          sleep 1
+          tmux send-keys -t localtunnel "lt -p 25565" ENTER
+          sleep 1
+          tmux capture-pane -pt localtunnel -S 1 -E 1
       - name: sleep
         run: sleep 999999999
 # kudos to you, lax1dude.

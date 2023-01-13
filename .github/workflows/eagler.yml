@@ -19,7 +19,7 @@ jobs:
           sleep 1
           tmux send-keys -t bukkit "cd bukkit_command; ./run_unix.sh" ENTER
           sleep 1
-          tmux capture-pane -pt bukkit -S 1 -E 1
+          tmux capture-pane -pt bukkit 
       - name: tunnel to the world
         run: |
           npm install -g localtunnel > /dev/null 2>&1

@@ -20,12 +20,11 @@ jobs:
           tmux send-keys -t bukkit "cd bukkit_command; chmod +x run_unix.sh; ./run_unix.sh" ENTER
           sleep 1
           tmux capture-pane -pt bukkit
-      - name: tunnel to the world
-        run: |
-          wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-          unzip -qq ngrok-stable-linux-amd64.zip
-          ./ngrok authtoken 2KHPU9GoTMYKBAxrxATjKziMzjv_5iN4QNLEruRiPx9ZXHQrY
-          ./ngrok tcp 25565
+      - uses: apogiatzis/ngrok-tunneling-action@<VERSION>
+        with:
+         timeout: 1h
+         port: 4000
+         ngrok_authtoken: 2KHPU9GoTMYKBAxrxATjKziMzjv_5iN4QNLEruRiPx9ZXHQrY
       - name: sleep
         run: sleep 999999999
 # kudos to you, lax1dude.

@@ -1,6 +1,6 @@
 # eagler-actions
 
-**CURRENTLY NOT DONE**
+**this is discontinued for now, you can fork it and do whatever you want. PR's would be helpful :)**
 
 eagler-actions is a way to run eaglercraft servers with Github Actions. currently this is skidded off my ultraviolet version of this but it should more or less work the same. it will only last 6 hours and the link will die if there is no activity in a hour, it should automatically work with wss (WebSocket Secure) sense it uses a npm package ```localtunnel```
 
